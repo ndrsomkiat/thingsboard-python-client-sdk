@@ -16,28 +16,7 @@ import logging
 from copy import deepcopy
 from inspect import signature
 from time import sleep
-from importlib import metadata
-from utils import install_package
 from os import environ
-
-def check_tb_paho_mqtt_installed():
-    try:
-        dists = metadata.distributions()
-        for dist in dists:
-            if dist.metadata["Name"].lower() == "tb-paho-mqtt-client":
-                files = list(dist.files)
-                for file in files:
-                    if str(file).startswith("paho/mqtt"):
-                        return True
-        return False
-    except Exception:
-        return False
-
-if not check_tb_paho_mqtt_installed():
-    try:
-        install_package('tb-paho-mqtt-client', version='>=2.1.2')
-    except Exception as e:
-        raise ImportError("tb-paho-mqtt-client is not installed, please install it manually.") from e
 
 import paho.mqtt.client as paho
 from math import ceil
