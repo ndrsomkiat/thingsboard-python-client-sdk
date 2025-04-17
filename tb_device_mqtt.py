@@ -32,7 +32,7 @@ from enum import Enum
 from paho.mqtt.reasoncodes import ReasonCodes
 from paho.mqtt.client import MQTT_ERR_QUEUE_SIZE
 
-from orjson import dumps, loads, JSONDecodeError
+from json import dumps, loads, JSONDecodeError
 
 from sdk_utils import verify_checksum
 
